@@ -2,7 +2,7 @@
 Patches base aosp kernel on common-android13-5.10 
 
 ```
-repo init -u https://android.googlesource.com/kernel/manifest -b common-android14-5.15
+repo init -u https://android.googlesource.com/kernel/manifest -b common-android13-5.10
 ```
 
 ```
