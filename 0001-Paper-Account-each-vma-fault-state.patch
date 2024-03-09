@@ -1,0 +1,364 @@
+From c7028589a566cdb9e8b00670b0f41462a2964890 Mon Sep 17 00:00:00 2001
+From: JohnnyChang <johnny777@hotmail.com.tw>
+Date: Sat, 9 Mar 2024 10:22:26 +0800
+Subject: [PATCH] Paper: Account each vma fault state
+
+Change-Id: I8884c00c3eebeb495aa0aff848d651b3d616c9b4
+---
+ drivers/block/Makefile       |   3 +
+ drivers/block/memory_count.c | 232 +++++++++++++++++++++++++++++++++++
+ fs/proc/task_mmu.c           |   7 +-
+ mm/memory.c                  |  32 +++--
+ 4 files changed, 263 insertions(+), 11 deletions(-)
+ create mode 100644 drivers/block/memory_count.c
+
+diff --git a/drivers/block/Makefile b/drivers/block/Makefile
+index 24427da7dd64..10a78f04271f 100644
+--- a/drivers/block/Makefile
++++ b/drivers/block/Makefile
+@@ -6,9 +6,12 @@
+ # Rewritten to use lists instead of if-statements.
+ # 
+ 
++KBUILD_CFLAGS += -Wno-error=unused-function
++
+ # needed for trace events
+ ccflags-y				+= -I$(src)
+ 
++obj-y				+= memory_count.o
+ obj-$(CONFIG_MAC_FLOPPY)	+= swim3.o
+ obj-$(CONFIG_BLK_DEV_SWIM)	+= swim_mod.o
+ obj-$(CONFIG_BLK_DEV_FD)	+= floppy.o
+diff --git a/drivers/block/memory_count.c b/drivers/block/memory_count.c
+new file mode 100644
+index 000000000000..57590c96e4d1
+--- /dev/null
++++ b/drivers/block/memory_count.c
+@@ -0,0 +1,232 @@
++#include <linux/module.h>
++#include <linux/platform_device.h>
++#include <linux/types.h>
++#include <linux/errno.h>
++#include <linux/time.h>
++#include <linux/kernel.h>
++#include <linux/sched.h>
++#include <linux/pid.h>
++#include <linux/vmacache.h>
++#include <linux/mm_inline.h>
++#include <linux/hugetlb.h>
++#include <linux/huge_mm.h>
++#include <linux/mount.h>
++#include <linux/seq_file.h>
++#include <linux/highmem.h>
++#include <linux/ptrace.h>
++#include <linux/slab.h>
++#include <linux/pagemap.h>
++#include <linux/mempolicy.h>
++#include <linux/rmap.h>
++#include <linux/swap.h>
++#include <linux/sched/mm.h>
++#include <linux/swapops.h>
++#include <linux/mmu_notifier.h>
++#include <linux/page_idle.h>
++#include <linux/shmem_fs.h>
++#include <linux/uaccess.h>
++#include <linux/pkeys.h>
++#include <linux/fs.h>
++#include <linux/string.h>
++#include <linux/atomic.h>
++#include <asm/elf.h>
++#include <asm/tlb.h>
++#include <asm/tlbflush.h>
++
++static atomic_t atomic_mutex = ATOMIC_INIT(0);
++
++struct vma_fault_record {
++	struct vma_fault_record *next;
++	struct vma_fault_record *start;
++	unsigned long vm_start;
++	bool file_page;
++	char vma_name[1024];
++};
++struct memory_profile_data {
++	unsigned long long file_fault;
++	unsigned long long anon_fault;
++	pid_t tgid;
++
++	struct vma_fault_record *current_vma_fault_record;
++};
++
++static struct memory_profile_data profile_data = { 0 };
++
++void account_file_fault(void)
++{
++	profile_data.file_fault++;
++}
++EXPORT_SYMBOL(account_file_fault);
++
++void account_anon_fault(void)
++{
++	profile_data.anon_fault++;
++}
++
++EXPORT_SYMBOL(account_anon_fault);
++
++static int is_stack(struct vm_area_struct *vma)
++{
++	/*
++	 * We make no effort to guess what a given thread considers to be
++	 * its "stack".  It's not even well-defined for programs written
++	 * languages like Go.
++	 */
++	return vma->vm_start <= vma->vm_mm->start_stack &&
++	       vma->vm_end >= vma->vm_mm->start_stack;
++}
++
++void account_vma_fault(struct task_struct *p, struct vm_area_struct *vma)
++{
++	if (atomic_read(&atomic_mutex) == 1)
++		return;
++	if (p->tgid == profile_data.tgid) {
++		struct vma_fault_record *node =
++			(struct vma_fault_record *)kmalloc(
++				sizeof(struct vma_fault_record), GFP_KERNEL);
++		node->vm_start = vma->vm_start;
++		if (vma->vm_file) {
++			char buff[1024];
++			char *name = NULL;
++			node->file_page = true;
++			name = d_path(&vma->vm_file->f_path, buff, 1024);
++			if (!IS_ERR(name)) {
++				strncpy(node->vma_name, name, 1024);
++			}
++		} else {
++			const char *name = NULL;
++			node->file_page = false;
++			if (vma->vm_ops && vma->vm_ops->name) {
++				name = vma->vm_ops->name(vma);
++			}
++			if (!name)
++				name = arch_vma_name(vma);
++			if (!name) {
++				struct anon_vma_name *anon_name;
++				if (!vma->vm_mm) {
++					name = "[vdso]";
++				} else if (vma->vm_start <= vma->vm_mm->brk &&
++					   vma->vm_end >=
++						   vma->vm_mm->start_brk) {
++					name = "[heap]";
++				} else if (is_stack(vma)) {
++					name = "[stack]";
++				} else {
++					anon_name = anon_vma_name(vma);
++					if (anon_name)
++						name = anon_name->name;
++				}
++			}
++			if (name) {
++				strncpy(node->vma_name, name, 1024);
++			}
++		}
++		if (profile_data.current_vma_fault_record == NULL) {
++			profile_data.current_vma_fault_record = node;
++			node->start = node;
++		} else {
++			node->start =
++				profile_data.current_vma_fault_record->start;
++			profile_data.current_vma_fault_record->next = node;
++			profile_data.current_vma_fault_record = node;
++		}
++	}
++}
++EXPORT_SYMBOL(account_vma_fault);
++
++static ssize_t total_fault_show(struct device *dev,
++				struct device_attribute *attr, char *buf)
++{
++	return sysfs_emit(buf, "Total File Fault %llu Anon Fault %llu\n",
++			  profile_data.file_fault, profile_data.anon_fault);
++}
++
++static DEVICE_ATTR_RO(total_fault);
++
++static ssize_t vma_fault_show(struct device *dev, struct device_attribute *attr,
++			      char *buf)
++{
++	int count = 0;
++	long long offset = 0;
++	char buff[1248];
++	struct file *file;
++	struct vma_fault_record *node =
++		profile_data.current_vma_fault_record->start;
++	struct vma_fault_record *tempt = NULL;
++	if (profile_data.current_vma_fault_record == NULL)
++		return sysfs_emit(buf, "memory_profile: No node value\n");
++
++	// Open the file
++	snprintf(buff, 1248, "/data/local/tmp/%d.txt", profile_data.tgid);
++	file = filp_open(buff, O_WRONLY | O_CREAT | O_LARGEFILE, 0644);
++	if (IS_ERR(file)) {
++		printk(KERN_ERR "Failed to open file\n");
++		return PTR_ERR(file);
++	}
++
++	while (node) {
++		count++;
++		snprintf(buff, 1248,
++			 "memory_profile: File Fault: %d Start: 0x%x VMA: %s\n",
++			 node->file_page, node->vm_start, node->vma_name);
++		printk("%s", buff);
++		kernel_write(file, buff, strlen(buff), &offset);
++		tempt = node;
++		node = node->next;
++		kfree(tempt);
++	}
++	profile_data.current_vma_fault_record = NULL;
++	filp_close(file, NULL);
++	return sysfs_emit(buf, "memory_profile: Provide VMA %d\n", count);
++}
++
++static ssize_t vma_fault_store(struct device *dev,
++			       struct device_attribute *attr, const char *buf,
++			       size_t count)
++{
++	unsigned long pid;
++	struct vma_fault_record *node = NULL, *tempt = NULL;
++
++	atomic_set(&atomic_mutex, 1);
++	if (profile_data.current_vma_fault_record)
++		node = profile_data.current_vma_fault_record->start;
++
++	pid = simple_strtoul(buf, NULL, 10);
++
++	profile_data.tgid = (pid_t)pid;
++	while (node) {
++		tempt = node;
++		node = node->next;
++		kfree(tempt);
++	}
++	profile_data.current_vma_fault_record = NULL;
++	printk("memory_profile: Track tgid %d", profile_data.tgid);
++	atomic_set(&atomic_mutex, 0);
++
++	return count;
++}
++static DEVICE_ATTR_RW(vma_fault);
++
++static struct platform_device memory_profile_platform = {
++	.name = "memory_profile",
++	.id = PLATFORM_DEVID_NONE,
++};
++
++static int __init memory_profile_platform_init(void)
++{
++	int ret = platform_device_register(&memory_profile_platform);
++	ret = device_create_file(&memory_profile_platform.dev,
++				 &dev_attr_total_fault);
++	ret = device_create_file(&memory_profile_platform.dev,
++				 &dev_attr_vma_fault);
++	return ret;
++}
++
++static void __exit memory_profile_platform_exit(void)
++{
++	platform_device_unregister(&memory_profile_platform);
++}
++
++module_init(memory_profile_platform_init);
++module_exit(memory_profile_platform_exit);
++MODULE_LICENSE("GPL");
+diff --git a/fs/proc/task_mmu.c b/fs/proc/task_mmu.c
+index 2bec3d68a505..aa3d764cdce0 100644
+--- a/fs/proc/task_mmu.c
++++ b/fs/proc/task_mmu.c
+@@ -290,7 +290,12 @@ show_map_vma(struct seq_file *m, struct vm_area_struct *vma)
+ 	start = vma->vm_start;
+ 	end = vma->vm_end;
+ 	show_vma_header_prefix(m, start, end, flags, pgoff, dev, ino);
+-
++	if (vma->android_kabi_reserved1 > 0) {
++		if (file)
++			seq_printf(m, "f:%lu", vma->android_kabi_reserved1);
++		else
++			seq_printf(m, "a:%lu", vma->android_kabi_reserved1);
++	}
+ 	/*
+ 	 * Print the dentry name for named mappings, and a
+ 	 * special [heap] marker for the heap:
+diff --git a/mm/memory.c b/mm/memory.c
+index 060222cbbb25..b8380bcdc5bc 100644
+--- a/mm/memory.c
++++ b/mm/memory.c
+@@ -4930,9 +4930,13 @@ static vm_fault_t __handle_mm_fault(struct vm_area_struct *vma,
+  * updates.  However note that the handling of PERF_COUNT_SW_PAGE_FAULTS should
+  * still be in per-arch page fault handlers at the entry of page fault.
+  */
++extern void account_file_fault(void);
++extern void account_anon_fault(void);
++extern void account_vma_fault(struct task_struct *p, struct vm_area_struct *vma);
++
+ static inline void mm_account_fault(struct pt_regs *regs,
+ 				    unsigned long address, unsigned int flags,
+-				    vm_fault_t ret)
++				    vm_fault_t ret, struct vm_area_struct* vma)
+ {
+ 	bool major;
+ 
+@@ -4957,11 +4961,16 @@ static inline void mm_account_fault(struct pt_regs *regs,
+ 	 */
+ 	major = (ret & VM_FAULT_MAJOR) || (flags & FAULT_FLAG_TRIED);
+ 
+-	if (major)
+-		current->maj_flt++;
+-	else
+-		current->min_flt++;
+-
++	if (major) {
++		if(vma && vma->vm_file) {
++			current->maj_flt++;
++			account_file_fault();
++		}
++		else {
++			current->min_flt++;
++			account_anon_fault();
++		}
++	}
+ 	/*
+ 	 * If the fault is done for GUP, regs will be NULL.  We only do the
+ 	 * accounting for the per thread fault counters who triggered the
+@@ -4970,9 +4979,12 @@ static inline void mm_account_fault(struct pt_regs *regs,
+ 	if (!regs)
+ 		return;
+ 
+-	if (major)
++	if (major) {
+ 		perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MAJ, 1, regs, address);
+-	else
++		if (vma)
++			vma->android_kabi_reserved1++;
++		account_vma_fault(current, vma);
++	} else
+ 		perf_sw_event(PERF_COUNT_SW_PAGE_FAULTS_MIN, 1, regs, address);
+ }
+ 
+@@ -5224,7 +5236,7 @@ vm_fault_t __handle_speculative_fault(struct mm_struct *mm,
+ 	if (ret != VM_FAULT_RETRY) {
+ 		put_vma(*vma);
+ 		*vma = NULL;
+-		mm_account_fault(regs, address, flags, ret);
++		mm_account_fault(regs, address, flags, ret, NULL);
+ 	}
+ 
+ 	return ret;
+@@ -5322,7 +5334,7 @@ vm_fault_t handle_mm_fault(struct vm_area_struct *vma, unsigned long address,
+ 			mem_cgroup_oom_synchronize(false);
+ 	}
+ 
+-	mm_account_fault(regs, address, flags, ret);
++	mm_account_fault(regs, address, flags, ret, vma);
+ 
+ 	return ret;
+ }
+-- 
+2.34.1
+
