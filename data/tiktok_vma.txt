@@ -1,0 +1,153 @@
+memory_profile: File Fault: 0 Start: 0xe128e000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xe128e000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xe12ce000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xe12ce000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xe130c000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x9ef48000 VMA: dalvik-/data/app/~~xIYkpNoif3GfGxBel7zstw==/com.zhiliaoapp.musically-rP0jGtteh2pKwBOE8m-pWA==/oat/arm64/base.art
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0xe12ce000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xe12ce000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xe12ce000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xe12ce000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xe12ce000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xe12ce000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xcec2f000 VMA: [stack]
+memory_profile: File Fault: 0 Start: 0x612d7000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 0 Start: 0x16f4b000 VMA: stack_and_tls:4899
+memory_profile: File Fault: 1 Start: 0xe4c58000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/ws_pref_monitor/ws_pref_monitor.blk
+memory_profile: File Fault: 1 Start: 0xeb0b7000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/ws_pref_monitor/ws_pref_monitor.chk
+memory_profile: File Fault: 1 Start: 0x1a16e000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00001.alog.cache
+memory_profile: File Fault: 1 Start: 0x1a16e000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00001.alog.cache
+memory_profile: File Fault: 0 Start: 0xcec2f000 VMA: [stack]
+memory_profile: File Fault: 0 Start: 0xcec2f000 VMA: [stack]
+memory_profile: File Fault: 1 Start: 0x16ec5000 VMA: /data/data/com.zhiliaoapp.musically/files/apm6_sdk/persistent/com_zhiliaoapp_musically.bin
+memory_profile: File Fault: 1 Start: 0x1380d000 VMA: /data/data/com.zhiliaoapp.musically/files/apm6/persistent/com_zhiliaoapp_musically.bin
+memory_profile: File Fault: 1 Start: 0x1a16e000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00001.alog.cache
+memory_profile: File Fault: 1 Start: 0xe4c58000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/ws_pref_monitor/ws_pref_monitor.blk
+memory_profile: File Fault: 1 Start: 0xe61e5000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/sdk_log_report_message/sdk_log_report_message.chk
+memory_profile: File Fault: 1 Start: 0xe4b63000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/sdk_log_report_message/sdk_log_report_message.blk
+memory_profile: File Fault: 1 Start: 0xd3377000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/new_user_popup_clean_v2_repo/new_user_popup_clean_v2_repo.chk
+memory_profile: File Fault: 1 Start: 0xb2484000 VMA: /data/app/~~xIYkpNoif3GfGxBel7zstw==/com.zhiliaoapp.musically-rP0jGtteh2pKwBOE8m-pWA==/oat/arm64/base.vdex
+memory_profile: File Fault: 1 Start: 0xd3374000 VMA: /data/data/com.zhiliaoapp.musically/files/foreground.status
+memory_profile: File Fault: 1 Start: 0x1a16e000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00001.alog.cache
+memory_profile: File Fault: 1 Start: 0x1a16e000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00001.alog.cache
+memory_profile: File Fault: 1 Start: 0xc833d000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/checkpoint_exit_info/checkpoint_exit_info.chk
+memory_profile: File Fault: 1 Start: 0x18a0000 VMA: /data/data/com.zhiliaoapp.musically/files/apm6/com_zhiliaoapp_musically_seq_num.txt
+memory_profile: File Fault: 1 Start: 0xdc8c0000 VMA: /data/data/com.zhiliaoapp.musically/files/TTMachineCoreCache/task_runtime_status_records
+memory_profile: File Fault: 1 Start: 0xe0cd9000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/apm_cpu_front/apm_cpu_front.blk
+memory_profile: File Fault: 1 Start: 0xe0cdb000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/apm_cpu_front/apm_cpu_front.chk
+memory_profile: File Fault: 1 Start: 0x1a114000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00002.alog.cache
+memory_profile: File Fault: 1 Start: 0xd3097000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/push_multi_process_config/push_multi_process_config.chk
+memory_profile: File Fault: 1 Start: 0xd3375000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/new_user_popup_clean_v2_repo/new_user_popup_clean_v2_repo.blk
+memory_profile: File Fault: 1 Start: 0xd3094000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/push_multi_process_config/push_multi_process_config.mmb
+memory_profile: File Fault: 1 Start: 0xd3095000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/push_multi_process_config/push_multi_process_config.blk
+memory_profile: File Fault: 1 Start: 0xdd891000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/btm_page_show_cache/btm_page_show_cache.blk
+memory_profile: File Fault: 1 Start: 0xdf000000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/btm_page_show_cache/btm_page_show_cache.chk
+memory_profile: File Fault: 1 Start: 0xdd891000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/btm_page_show_cache/btm_page_show_cache.blk
+memory_profile: File Fault: 1 Start: 0xe5f8c000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/appsflyer-data/appsflyer-data.chk
+memory_profile: File Fault: 0 Start: 0x294f9000 VMA: dalvik-card table
+memory_profile: File Fault: 1 Start: 0x1a5c9000 VMA: /data/data/com.zhiliaoapp.musically/databases/1233_feature_engineering.db-shm
+memory_profile: File Fault: 1 Start: 0x1a5c9000 VMA: /data/data/com.zhiliaoapp.musically/databases/1233_feature_engineering.db-shm
+memory_profile: File Fault: 1 Start: 0x1a5c9000 VMA: /data/data/com.zhiliaoapp.musically/databases/1233_feature_engineering.db-shm
+memory_profile: File Fault: 1 Start: 0xe5f83000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/appsflyer-data/appsflyer-data.blk
+memory_profile: File Fault: 1 Start: 0xd30b3000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/last_sp_session/last_sp_session.chk
+memory_profile: File Fault: 1 Start: 0xd3043000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/last_sp_session/last_sp_session.blk
+memory_profile: File Fault: 1 Start: 0x1a114000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00002.alog.cache
+memory_profile: File Fault: 0 Start: 0x12d6000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x254c0000 VMA: dalvik-main space (region space)
+memory_profile: File Fault: 1 Start: 0xd3060000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/monitor_downgradep/monitor_downgradep.blk
+memory_profile: File Fault: 1 Start: 0xeb0f7000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/monitor_downgradep/monitor_downgradep.chk
+memory_profile: File Fault: 1 Start: 0x1a114000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00002.alog.cache
+memory_profile: File Fault: 1 Start: 0xc3b29000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/bd_turning_settings_init/bd_turning_settings_init.chk
+memory_profile: File Fault: 0 Start: 0xe12ce000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x112d0000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x112d0000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x11290000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x11290000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0xf4838000 VMA: scudo:secondary
+memory_profile: File Fault: 0 Start: 0xf4838000 VMA: scudo:secondary
+memory_profile: File Fault: 0 Start: 0xf4838000 VMA: scudo:secondary
+memory_profile: File Fault: 0 Start: 0xf4838000 VMA: scudo:secondary
+memory_profile: File Fault: 0 Start: 0xf4838000 VMA: scudo:secondary
+memory_profile: File Fault: 0 Start: 0xf4838000 VMA: scudo:secondary
+memory_profile: File Fault: 0 Start: 0xf4838000 VMA: scudo:secondary
+memory_profile: File Fault: 0 Start: 0xf4838000 VMA: scudo:secondary
+memory_profile: File Fault: 0 Start: 0x112d0000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x112d0000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x112d0000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x112d0000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x112d0000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x112d0000 VMA: scudo:primary
+memory_profile: File Fault: 1 Start: 0xb2484000 VMA: /data/app/~~xIYkpNoif3GfGxBel7zstw==/com.zhiliaoapp.musically-rP0jGtteh2pKwBOE8m-pWA==/oat/arm64/base.vdex
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x984a0000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0xe4cf6000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/storage_info/storage_info.chk
+memory_profile: File Fault: 1 Start: 0xe4b65000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/aweme_local_video/aweme_local_video.blk
+memory_profile: File Fault: 1 Start: 0xe5eb8000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/aweme_local_video/aweme_local_video.chk
+memory_profile: File Fault: 1 Start: 0xdc83b000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/play_count/play_count.blk
+memory_profile: File Fault: 1 Start: 0xe0cee000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/play_count/play_count.chk
+memory_profile: File Fault: 1 Start: 0x16f9000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/story_widget_manager_repo/story_widget_manager_repo.chk
+memory_profile: File Fault: 1 Start: 0xe473b000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/story_widget_manager_repo/story_widget_manager_repo.blk
+memory_profile: File Fault: 1 Start: 0x1a114000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00002.alog.cache
+memory_profile: File Fault: 1 Start: 0x1a114000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00002.alog.cache
+memory_profile: File Fault: 1 Start: 0x1a114000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00002.alog.cache
+memory_profile: File Fault: 1 Start: 0xc8440000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/keva_video_consume/keva_video_consume.chk
+memory_profile: File Fault: 0 Start: 0xd12cb000 VMA: scudo:primary
+memory_profile: File Fault: 0 Start: 0x712d0000 VMA: scudo:primary
+memory_profile: File Fault: 1 Start: 0x1ae1e000 VMA: /memfd:jit-cache (deleted)
+memory_profile: File Fault: 1 Start: 0x1a5c9000 VMA: /data/data/com.zhiliaoapp.musically/databases/1233_feature_engineering.db-shm
+memory_profile: File Fault: 1 Start: 0x1a5c9000 VMA: /data/data/com.zhiliaoapp.musically/databases/1233_feature_engineering.db-shm
+memory_profile: File Fault: 1 Start: 0xf4828000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/sp_gecko/sp_gecko.blk
+memory_profile: File Fault: 1 Start: 0xf482a000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/sp_gecko/sp_gecko.chk
+memory_profile: File Fault: 1 Start: 0xe61e8000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/sp_gecko/gecko_settings.sgv
+memory_profile: File Fault: 1 Start: 0xe61e8000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/sp_gecko/gecko_settings.sgv
+memory_profile: File Fault: 1 Start: 0xe61e8000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/sp_gecko/gecko_settings.sgv
+memory_profile: File Fault: 1 Start: 0xe61e8000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/sp_gecko/gecko_settings.sgv
+memory_profile: File Fault: 1 Start: 0xe61e8000 VMA: /data/data/com.zhiliaoapp.musically/files/keva/repo/sp_gecko/gecko_settings.sgv
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x93820000 VMA: /dev/ashmem/CursorWindow: /data/user/0/com.zhiliaoapp.musically/databases/1233@bd_tea_agent.db (deleted)
+memory_profile: File Fault: 1 Start: 0x1a114000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__default__00002.alog.cache
+memory_profile: File Fault: 0 Start: 0x294f9000 VMA: dalvik-card table
+memory_profile: File Fault: 1 Start: 0xb2484000 VMA: /data/app/~~xIYkpNoif3GfGxBel7zstw==/com.zhiliaoapp.musically-rP0jGtteh2pKwBOE8m-pWA==/oat/arm64/base.vdex
+memory_profile: File Fault: 1 Start: 0xb2484000 VMA: /data/app/~~xIYkpNoif3GfGxBel7zstw==/com.zhiliaoapp.musically-rP0jGtteh2pKwBOE8m-pWA==/oat/arm64/base.vdex
+memory_profile: File Fault: 1 Start: 0x15a32000 VMA: /data/data/com.zhiliaoapp.musically/files/ALOG/com.zhiliaoapp.musically__traceAlog__00002.alog.cache
+memory_profile: File Fault: 1 Start: 0xdc8c0000 VMA: /data/data/com.zhiliaoapp.musically/files/TTMachineCoreCache/task_runtime_status_records
