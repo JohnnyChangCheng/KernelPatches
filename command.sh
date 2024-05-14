@@ -1,9 +1,9 @@
 
-adb install -g -r Facebook_453.0.0.0.10_apkcombo.com.apk
-adb install -g -r Instagram_320.0.0.0.7_apkcombo.com.apk
-adb install -g -r maplestory.apk
-adb install -g -r TikTok_33.6.3_apkcombo.com.apk
-adb install -g -r X_10.29.0-release.0_Apkpure.apk
+adb install -g -r facebook.apk
+adb install -g -r insta.apk
+adb install -g -r maple.apk
+adb install -g -r tiktok.apk
+adb install -g -r x.apk
 adb install -g -r whatsapp.apk
 adb install -g -r waze.apk
 
@@ -195,3 +195,49 @@ adb shell "rm -rf /data/local/tmp/*.txt"
 adb shell cat /sys/devices/platform/memory_profile/vma_fault
 adb pull "/data/local/tmp/$(adb shell pgrep -o -f com.zhiliaoapp.musically).txt" tiktok_vma.txt 
 adb shell "cat /proc/$(adb shell pgrep -o -f com.zhiliaoapp.musically)/smaps" > "tiktok_smaps.txt"
+
+# Monitor facebook vma status
+adb shell "echo $(adb shell pgrep -o -f com.instagram.android) > /sys/devices/platform/memory_profile/vma_fault"
+
+adb shell "am start -W -n com.nexon.maplem.global/com.nexon.maplem.module.MapleUnityActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.whatsapp/com.whatsapp.registration.EULA -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.zhiliaoapp.musically/com.ss.android.ugc.aweme.splash.SplashActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.twitter.android/com.twitter.onboarding.ocf.signup.SignUpSplashActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.instagram.android/com.instagram.mainactivity.InstagramMainActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.waze/com.waze.MainActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.facebook.katana/.LoginActivity  -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+
+adb shell "rm -rf /data/local/tmp/*.txt"
+adb shell cat /sys/devices/platform/memory_profile/vma_fault
+adb pull "/data/local/tmp/$(adb shell pgrep -o -f com.instagram.android).txt" instagram_vma.txt 
+adb shell "cat /proc/$(adb shell pgrep -o -f com.instagram.android)/smaps" > "instagram_smaps.txt"
+
+# Monitor facebook vma status
+adb shell "echo $(adb shell pgrep -o -f com.facebook.katana) > /sys/devices/platform/memory_profile/vma_fault"
+
+adb shell "am start -W -n com.nexon.maplem.global/com.nexon.maplem.module.MapleUnityActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.whatsapp/com.whatsapp.registration.EULA -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.zhiliaoapp.musically/com.ss.android.ugc.aweme.splash.SplashActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.twitter.android/com.twitter.onboarding.ocf.signup.SignUpSplashActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.instagram.android/com.instagram.mainactivity.InstagramMainActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.waze/com.waze.MainActivity -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+adb shell "am start -W -n com.facebook.katana/.LoginActivity  -c android.intent.category.LAUNCHER -a android.intent.action.MAIN"
+sleep 5
+
+adb shell "rm -rf /data/local/tmp/*.txt"
+adb shell cat /sys/devices/platform/memory_profile/vma_fault
+adb pull "/data/local/tmp/$(adb shell pgrep -o -f com.facebook.katana).txt" facebook_vma.txt 
+adb shell "cat /proc/$(adb shell pgrep -o -f com.facebook.katana)/smaps" > "facebook_smaps.txt"

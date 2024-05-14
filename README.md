@@ -37,3 +37,11 @@ Date:   Thu Feb 8 13:45:31 2024 -0800
     Change-Id: Ic1fda0a5549088d5f37004dbacf3193116a5f868
     Signed-off-by: Suren Baghdasaryan <surenb@google.com>
 ```
+
+```
+repo init -u https://android.googlesource.com/kernel/manifest -b android-gs-lynx-5.10-android14
+```
+
+```
+android-14.0.0_r2
+```
